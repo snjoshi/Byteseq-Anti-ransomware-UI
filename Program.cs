@@ -7,6 +7,7 @@ namespace NetluxUI
 {
     static class Program
     {
+        public static int x = 0;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,8 +16,11 @@ namespace NetluxUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NXAntivirus());
-           // Application.Run(new Protection());
+           // if(x!=0)
+                Application.Run(new NXAntivirus());
+          //  else
+          //      Application.Run(new Activation());
+            // Application.Run(new Protection());
         }
     }
 }

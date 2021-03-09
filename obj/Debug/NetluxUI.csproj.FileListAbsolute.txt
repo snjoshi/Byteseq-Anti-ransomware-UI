@@ -44,3 +44,4 @@ F:\Projects\NetluxUI_ongoing\NetluxUI\obj\Debug\NetluxUI.csproj.CopyComplete
 F:\Projects\NetluxUI_ongoing\NetluxUI\obj\Debug\NetluxUI.Privacy.resources
 F:\Projects\NetluxUI_ongoing\NetluxUI\obj\Debug\NetluxUI.Settings.resources
 F:\Projects\NetluxUI_ongoing\NetluxUI\obj\Debug\NetluxUI.Performance.resources
+F:\Projects\NetluxUI_ongoing\NetluxUI\obj\Debug\NetluxUI.Activation.resources

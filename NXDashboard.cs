@@ -18,6 +18,7 @@ namespace NetluxUI
     public partial class NXAntivirus : Form
         
     {
+        public static int x = 0;
         public static string iniPath = "F:\\nxui.ini";
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -74,15 +75,7 @@ namespace NetluxUI
             button_settings.BackColor = sidepanelbuttoncolour;
 
         }
-        public void RoundButton()
-        {
-            for (var i = 0; i < listbutton.Count; i++)
-            {
-            //    listbutton[i].Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button_virusprotection.Width, button_virusprotection.Height, 30, 30));
-            }
-
-            
-        }
+        
 
         public void SendPanelsBack()
         {
@@ -92,43 +85,7 @@ namespace NetluxUI
             }
 
         }
-        public void loadbuttons()
-        {
-            //listbutton.Add(protection.button_virusprotection);
-            //listbutton.Add(protection.button_scansettings);
-            //listbutton.Add(protection.button_browsingprotection);
-            //listbutton.Add(protection.button_safebanking);
-            //listbutton.Add(protection.button_usbdriveprotection);
-            //listbutton.Add(protection.button_externaldriveprotection);
-            //listbutton.Add(protection.button_malwareprotection);
-            //listbutton.Add(protection.button_antimalware);
-            //listbutton.Add(button_databackup);
-            //listbutton.Add(button_managebackup);
-            //listbutton.Add(button_restorebackup);
-            //listbutton.Add(button_filevault);
-            //listbutton.Add(button_parentalcontrol);
-            //listbutton.Add(button_webcamprotection);
-            //listbutton.Add(button_registryrestore);
-            //listbutton.Add(button_datatheftprotection);
-            //listbutton.Add(button_wifiscanner);
-            //listbutton.Add(button_screenlocker);
-            //listbutton.Add(button_antikeylogger);
-            //listbutton.Add(button_autosilentmode);
-            //listbutton.Add(button_trackcleaner);
-            //listbutton.Add(button_hijackrestore);
-            //listbutton.Add(button_systemexplorer);
-            //listbutton.Add(button_gamebooster);
-            //listbutton.Add(button_trackcleaner);
-            //listbutton.Add(button_automaticupdate);
-            //listbutton.Add(button_viewquarantinefiles);
-            //listbutton.Add(button_reportsettings);
-            //listbutton.Add(button_reportvirusstatistics);
-            //listbutton.Add(button_restoredefaultsettings);
-            //listbutton.Add(button_passwordprotection);
-            //listbutton.Add(button_selfprotection);
-            //listbutton.Add(button_createemergency);
-
-        }
+       
 
         public void loadinternalpanels()
         {
@@ -186,58 +143,33 @@ namespace NetluxUI
 
             //3
             listpanel.Add(panel_submenu);
-            //listpanel.Add(panel_protection);
-           // listpanel.Add(panel_privacy);
-
-            //6
-         //   listpanel.Add(panel_performance);
-          //  listpanel.Add(panel_settings);
             listpanel.Add(panel_internalmenu);
 
-            //9
+            //5
             listpanel.Add(panel_internalflowprotection);
             listpanel.Add(panel_internalflowprivacy);
+           //7
+            listpanel.Add(panel_base);
+            listpanel.Add(panel_userbase);
             listpanel.Add(panel_activationwindow);
 
-            //12
-            listpanel.Add(panel_activationheader);
-            listpanel.Add(panel_base);
-            listpanel.Add(panel_userinfo);
-
-            //15
-            listpanel.Add(panel_userinfoheader);
+            //10
+             listpanel.Add(panel_activationheader);
+            
         }
         private PictureBox pb;
-        
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void RoundButton()
         {
-           Protection protection = new Protection();
-            protection.Execute();
-          //  Console.WriteLine("\nThe call counter: {0}", ctr);
-
-
-            setButtonImages();
-            pb = new PictureBox();
-            panel_base.Controls.Add(pb);
-            pb.Dock = DockStyle.Fill;
-
-            loadbuttons();
-            loadinternalpanels();
-            loadallprimarypanels();
-            pictureBox_userimage.Image = NXuisupport.Properties.Resources.user;
-            //add panels;
-
-
-            RoundButton();
             button_ScanNow.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button_ScanNow.Width, button_ScanNow.Height, 30, 30));
             button_scanoptions.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button_scanoptions.Width, button_scanoptions.Height, 30, 30));
             button_pctuner.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button_scanoptions.Width, button_scanoptions.Height, 30, 30));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 30, 30));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 30, 30));
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 30, 30));
-           // panel_SideButtons.Region= Region.FromHrgn(CreateRoundRectRgn(0, 0, panel_SideButtons.Width,panel_SideButtons.Height, 80, 100));
-            //var MyIni = new IniFile(@"C:\\Users\\hp\\source\\repos\\NetluxUI\\nxui.ini");
-
+        }
+        private void SetColours()
+        {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile(iniPath);
             string hamburgerpanel = data["MyProg"]["hamburgerpanel"];
@@ -277,64 +209,63 @@ namespace NetluxUI
 
 
             Color submenubuttonbordercolour = System.Drawing.ColorTranslator.FromHtml(submenubuttonborder);
-            //button_virusprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_antimalware.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_scansettings.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_browsingprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_safebanking.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_usbdriveprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_malwareprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_externaldriveprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
-            //button_virusprotection.FlatAppearance.BorderColor = submenubuttonbordercolour;
 
-
-            //button_antimalware.BackColor = submenubuttonbordercolour;
-            //button_scansettings.BackColor = submenubuttonbordercolour;
-            //button_browsingprotection.BackColor = submenubuttonbordercolour;
-            //button_safebanking.BackColor = submenubuttonbordercolour;
-            //button_usbdriveprotection.BackColor = submenubuttonbordercolour;
-            //button_malwareprotection.BackColor = submenubuttonbordercolour;
-            //button_externaldriveprotection.BackColor = submenubuttonbordercolour;
-            //button_virusprotection.BackColor = submenubuttonbordercolour;
 
             for (var i = 0; i < listbutton.Count; i++)
             {
                 listbutton[i].FlatAppearance.BorderColor = submenubuttonbordercolour;
                 listbutton[i].BackColor = submenubuttonbordercolour;
-                listbutton[i].Padding = new Padding(0,5,0,0);
+                listbutton[i].Padding = new Padding(0, 5, 0, 0);
                 listbutton[i].Font = new Font("Microsoft Sans Serif", 12);
 
             }
-
-
             //set labels
             label_dbupdate.Text = label_update;
             label_copyright.Text = copyright;
             label_header.Text = productname;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           //Protection protection = new Protection();
+           // protection.Execute();
+          //  Console.WriteLine("\nThe call counter: {0}", ctr);
+
+
+            setButtonImages();
+            //pb = new PictureBox();
+            //panel_base.Controls.Add(pb);
+            //pb.Dock = DockStyle.Fill;
+
+          //  loadbuttons();
+            loadinternalpanels();
+            loadallprimarypanels();
+            pictureBox_userimage.Image = NXuisupport.Properties.Resources.user;
+            //add panels;
+
+
+            RoundButton();
+            SetColours();
+           // panel_SideButtons.Region= Region.FromHrgn(CreateRoundRectRgn(0, 0, panel_SideButtons.Width,panel_SideButtons.Height, 80, 100));
+           //var MyIni = new IniFile(@"C:\\Users\\hp\\source\\repos\\NetluxUI\\nxui.ini");
+
+
+
+
+            
             SendPanelsBack();
 
-            listpanel[0].BringToFront();
-            listpanel[1].BringToFront();
-            listpanel[2].BringToFront();
-            // Blur();
-            //listpanel[13].BringToFront();
-            ////  listpanel[14].BringToFront();
-            ////listpanel[11];
-            //listpanel[11].BringToFront();
-            //listpanel[12].BringToFront();
+            panel_base.BringToFront();
+            panel_activationheader.BringToFront();
+            panel_activationwindow.BringToFront();
 
-
-
-
+            
 
         }
 
 
         private void panel_SideButtons_Paint(object sender, PaintEventArgs e)
         {
-            
-          //  e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-           // e.Graphics.FillEllipse(Brushes.Red, new Rectangle(10, 10, 32, 32));
+                  
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -984,7 +915,7 @@ namespace NetluxUI
 
         private void textBox_actkey1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox_actkey1.TextLength == textBox_actkey1.MaxLength) textBox_actkey2.Focus();
+           
         }
 
         private void textBox_actkey4_TextChanged(object sender, EventArgs e)
@@ -1066,10 +997,10 @@ namespace NetluxUI
 
         private void button_userinfocancel_Click(object sender, EventArgs e)
         {
-            //SendPanelsBack();
-            panel_userinfo.SendToBack();
-            panel_activationheading.BringToFront();
-            panel_activationwindow.BringToFront();
+            SendPanelsBack();
+            //panel_userinfo.SendToBack();
+            //panel_activationheading.BringToFront();
+            //panel_activationwindow.BringToFront();
         }
         private void Blur()
         {
@@ -1118,6 +1049,51 @@ namespace NetluxUI
         private void panel_form_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button_activate_Click_1(object sender, EventArgs e)
+        {
+            SendPanelsBack();
+            panel_base.BringToFront();
+            panel_userbase.BringToFront();
+        }
+
+        private void pictureBox_userimage_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_actkey1_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBox_actkey1.TextLength == textBox_actkey1.MaxLength) textBox_actkey2.Focus();
+        }
+
+        private void textBox_actkey2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_actkey2.TextLength == textBox_actkey2.MaxLength) textBox_actkey3.Focus();
+        }
+
+        private void textBox_actkey3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_actkey3.TextLength == textBox_actkey3.MaxLength) textBox_actkey4.Focus();
+        }
+
+        private void button_userinfosubmit_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Activation Successful");
+            listpanel[0].BringToFront();
+            listpanel[1].BringToFront();
+            listpanel[2].BringToFront();
+            panel_SideButtons.BringToFront();
+
+        }
+
+        private void button_userinfocancel_Click_1(object sender, EventArgs e)
+        {
+            SendPanelsBack();
+            panel_base.BringToFront();
+            panel_activationheading.BringToFront();
+            panel_activationwindow.BringToFront();
         }
     }
     public class BitmapFilter
